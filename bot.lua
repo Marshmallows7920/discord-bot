@@ -3,7 +3,7 @@ local json = require("json")
 local http = require("coro-http")
 local client = discordia.Client()
 local unpack = table.unpack or unpack
-local token = process.env.token--your own bot's token here
+local token = client.env.token--your own bot's token here
 
 
 --[[
