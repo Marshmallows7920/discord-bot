@@ -27,12 +27,23 @@ end
 
 function cute(message)
     coroutine.wrap(function()
-        local link = "https://www.reddit.com/r/eyebleach/new.json"
+        local link = "https://www.reddit.com/r/eyebleach/new.json?limit=100"
         local result, body = http.request("GET", link)
 
         body = json.parse(body)  
 
-        message:reply(body["data"]["children"][math.random(1, 23)]["data"].url)
+        message:reply(body["data"]["children"][math.random(1, 98)]["data"].url)
+    end)()
+end
+
+function meme(message)
+    coroutine.wrap(function()
+        local link = "https://www.reddit.com/r/wholesomememes/new.json?limit=100"
+        local result, body = http.request("GET", link)
+
+        body = json.parse(body)  
+
+        message:reply(body["data"]["children"][math.random(1, 98)]["data"].url)
     end)()
 end
 
@@ -63,6 +74,15 @@ client:on("messageCreate", function(message)
     end
     if content:lower() == "~cute" then
         cute(message)
+    end
+    if content:find("sad") then
+        message:reply("don't be sad!" + cute(message))
+    end
+    if content:find("bad") then
+        message:reply("not bad")
+    end
+    if content:lower() == "~meme" then
+        meme(message)
     end
 
 end)
