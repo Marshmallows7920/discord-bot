@@ -1,1 +1,1 @@
-worker: luavit bot
+worker: luvit bot
