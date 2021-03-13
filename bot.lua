@@ -3,6 +3,7 @@ local json = require("json")
 local http = require("coro-http")
 local client = discordia.Client()
 local unpack = table.unpack or unpack
+local token = process.env.token--your own bot's token here
 
 
 --[[
@@ -66,4 +67,5 @@ client:on("messageCreate", function(message)
 
 end)
 
-client:run("Bot "..io.open("./login.txt"):read())
+-- client:run("Bot "..io.open("./login.txt"):read())
+client:run("Bot "..token)
