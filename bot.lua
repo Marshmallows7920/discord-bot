@@ -127,10 +127,10 @@ client:on("messageCreate", function(message)
 
     -- Ping
     if content:find("ping") then
-        message:reply("pong")
-        local otime = os.time - message.createdAt
-        local ctime = client:ping
-        message:reply("🏓Latency is "..otime.."ms. API Latency is " ..ctime.."ms")
+        message:reply("🏓pong")
+        -- local otime = os.time - message.createdAt
+        -- local ctime = client:ping
+        -- message:reply("🏓Latency is "..otime.."ms. API Latency is " ..ctime.."ms")
     end
 
     -- Joke
