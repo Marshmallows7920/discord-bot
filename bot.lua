@@ -76,7 +76,7 @@ client:on("messageCreate", function(message)
         cute(message)
     end
     if content:find("sad") then
-        message:reply("don't be sad!" + cute(message))
+        message:reply("don't be sad!" .. cute(message))
     end
     if content:find("bad") then
         message:reply("not bad")
