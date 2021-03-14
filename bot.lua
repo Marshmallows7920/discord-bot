@@ -5,6 +5,26 @@ local client = discordia.Client()
 local unpack = table.unpack or unpack
 local token = os.getenv("token")--your own bot's token here
 
+local affirmations = {
+    "Don’t sweat the small stuff.",
+    "You are love. You are purpose. You were made with divine intention.",
+    "You can. You will. End of story.",
+    "You are adventurous. You overcome fears by following your dreams.",
+    "You feed your spirit. You train your body. You focus your mind. It’s your time.",
+    "You are in charge of how you feel and today you are choosing happiness.",
+    "You are your own superhero.",
+    "You will not compare myself to strangers on the Internet.",
+    "You are choosing and not waiting to be chosen.",
+    "You are enough.",
+    "You are whole.",
+    "You have the power to create change.",
+    "You let go of all things that no longer serve you.",
+    "You can do all things.",
+    "You refuse to give up because you haven’t tried all possible ways.",
+    "You deserve the best and you will accept the best now.",
+    "You're going to make everyone so proud.",
+    "Your presence is your power.",
+    "When you really want it, you are unstoppable."}
 
 --[[
     Notes
@@ -84,6 +104,15 @@ client:on("messageCreate", function(message)
     end
     if content:lower() == "~meme" then
         meme(message)
+    end
+    if content:find("love") then
+        message:reply("I love you")
+    end
+    if content:find("wholesome") then
+        message:reply("Quite Wholesome")
+    end
+    if content:find("positive") then
+        message:reply(affirmations[ math.random( #affirmations ) ])
     end
 
 end)
