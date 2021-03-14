@@ -26,6 +26,10 @@ local affirmations = {
     "Your presence is your power.",
     "When you really want it, you are unstoppable."}
 
+local jokes = {
+    "kunal","mohsen","Yashas","Andrea","Ronnie","Marc Yu"
+}
+
 --[[
     Notes
 ]]
@@ -71,10 +75,13 @@ function food(message)
     coroutine.wrap(function()
         local link = "https://www.reddit.com/r/food/new.json?limit=100"
         local result, body = http.request("GET", link)
+        local postnum = math.random(1, 100)
 
         body = json.parse(body)  
 
-        message:reply(body["data"]["children"][math.random(1, 100)]["data"].url)
+        message:reply(
+            body["data"]["children"][postnum]["data"].title.."\n"..
+            body["data"]["children"][postnum]["data"].url)
     end)()
 end
 
@@ -94,10 +101,7 @@ function info(message)
 					{name = "CPU Threads: ", value = ts(threads),inline = false},
 					{name = "CPUT Mode: ", value = ts(cpumodel), inline = false},
                     {name = "Memory Usage: ", value = ts(mem).." MB", inline = false}
-				},
-				color = discordia.Color(128, 255, 255).value,
-				-- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
-				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
+				}
 			}
 		}
 
@@ -119,35 +123,37 @@ client:on("messageCreate", function(message)
     local member = message.member
     local memberid = message.member.id
 
-    if content:lower() == "tell me a joke" then
-        message:reply("kunal")
-    end
+
+
+    -- Ping
     if content:find("ping") then
         message:reply("pong")
+        message:reply("🏓Latency is "..os.time - message.createdAt.."ms. API Latency is " ..Math.round(client:ping)}.."ms")
     end
+
+    -- Joke
     if content:lower() == "~joke" then
         Joke(message)
     end
+
+    -- Cute
     if content:lower() == "~cute" then
         cute(message)
     end
-    if content:find("sad") then
+
+    -- Meme
+    if content:lower() == "~meme" then
+        meme(message)
+    end
+
+    -- Sad
+    if content:lower() == "~sad" then
         message:reply("don't be sad!")
         message:reply(affirmations[ math.random( #affirmations ) ])
         cute(message)
     end
-    if content:find("bad") then
-        message:reply("not bad")
-    end
-    if content:lower() == "~meme" then
-        meme(message)
-    end
-    if content:find("love") then
-        message:reply("I love you")
-    end
-    if content:find("wholesome") then
-        message:reply("Quite Wholesome")
-    end
+
+    -- Help Menu
     if content:lower() == "~help" then
 		message:reply {
 			embed = {
@@ -163,6 +169,8 @@ client:on("messageCreate", function(message)
 					{name = "~joke", value = "jokes",inline = false},
 					{name = "~cute", value = "cute pictures",inline = false},
 					{name = "~meme", value = "wholesome memes", inline = false},
+                    {name = "~food", value = "yumyum", inline = false},
+                    {name = "~sad", value = "sad no more", inline = false},
                     {name = "-----", value = "Other messages will be sent based on message context", inline = false}
 				},
 				color = discordia.Color(128, 255, 255).value,
@@ -170,7 +178,38 @@ client:on("messageCreate", function(message)
 				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
 			}
 		}
-	end	
+	end
+    
+    -- disabled on cs server
+    if Guild.get.name() != "UManitoba Computer Science Lounge" then
+        
+        -- Sad
+        if content:find("I'm sad") then
+            message:reply("don't be sad!")
+            message:reply(affirmations[ math.random( #affirmations ) ])
+            cute(message)
+        end
+
+        -- Bad
+        if content:find("bad") then
+            message:reply("not bad")
+        end
+
+        -- Love
+        if content:find("I love") then
+            message:reply("I love you")
+        end
+
+        -- Wholesome
+        if content:find("wholesome") then
+            message:reply("Quite Wholesome")
+        end
+
+        -- Kunal
+        if content:lower() == "tell me a joke" then
+            message:reply(jokes[math.random(#jokes)])
+        end
+
 end)
 
 -- client:run("Bot "..io.open("./login.txt"):read())
