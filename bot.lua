@@ -183,7 +183,7 @@ client:on("messageCreate", function(message)
 	end
     
     -- disabled on cs server
-    if Guild.get.name() != "UManitoba Computer Science Lounge" then
+    if Guild.get.name() ~= "UManitoba Computer Science Lounge" then
         
         -- Sad
         if content:find("I'm sad") then
