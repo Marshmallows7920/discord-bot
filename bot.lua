@@ -97,6 +97,7 @@ client:on("messageCreate", function(message)
     end
     if content:find("sad") then
         message:reply("don't be sad!")
+        message:reply(affirmations[ math.random( #affirmations ) ])
         cute(message)
     end
     if content:find("bad") then
@@ -111,10 +112,29 @@ client:on("messageCreate", function(message)
     if content:find("wholesome") then
         message:reply("Quite Wholesome")
     end
-    if content:find("positive") then
-        message:reply(affirmations[ math.random( #affirmations ) ])
-    end
-
+    if content:lower() == "~help" then
+		message.channel:sendMessage {
+			embed = {
+				title = "Invite to your Server",
+                url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot"
+				description = "Command List",
+                author = {
+					name = "Help Menu",
+					icon_url = "https://i.imgur.com/dqsdblw.png"
+				},
+                thumbnail = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"
+				fields = {
+					{name = "~joke", value = "jokes",inline = false},
+					{name = "~cute", value = "cute pictures",inline = false},
+					{name = "~meme", value = "wholecome memes", inline = false},
+                    {name = "", value = "Other messages will be sent based on message context", inline = false},
+				},
+				color = discordia.Color(128, 255, 255).value,
+				timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
+				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
+			}
+		}
+	end	
 end)
 
 -- client:run("Bot "..io.open("./login.txt"):read())
