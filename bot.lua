@@ -211,6 +211,7 @@ client:on("messageCreate", function(message)
         if content:lower() == "tell me a joke" then
             message:reply(jokes[math.random(#jokes)])
         end
+    end
 
 end)
 
