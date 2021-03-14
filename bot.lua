@@ -126,7 +126,7 @@ client:on("messageCreate", function(message)
 				fields = {
 					{name = "~joke", value = "jokes",inline = false},
 					{name = "~cute", value = "cute pictures",inline = false},
-					{name = "~meme", value = "wholecome memes", inline = false},
+					{name = "~meme", value = "wholesome memes", inline = false},
                     {name = "-----", value = "Other messages will be sent based on message context", inline = false}
 				},
 				color = discordia.Color(128, 255, 255).value,
