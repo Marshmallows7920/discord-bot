@@ -113,7 +113,7 @@ client:on("messageCreate", function(message)
         message:reply("Quite Wholesome")
     end
     if content:lower() == "~help" then
-		message.channel:sendMessage {
+		message:reply {
 			embed = {
 				title = "Invite to your Server",
                 url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot",
