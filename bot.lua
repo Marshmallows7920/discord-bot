@@ -52,7 +52,7 @@ function cute(message)
 
         body = json.parse(body)  
 
-        message:reply(body["data"]["children"][math.random(1, 98)]["data"].url)
+        message:reply(body["data"]["children"][math.random(1, 100)]["data"].url)
     end)()
 end
 
@@ -63,10 +63,46 @@ function meme(message)
 
         body = json.parse(body)  
 
-        message:reply(body["data"]["children"][math.random(1, 98)]["data"].url)
+        message:reply(body["data"]["children"][math.random(1, 100)]["data"].url)
     end)()
 end
 
+function food(message)
+    coroutine.wrap(function()
+        local link = "https://www.reddit.com/r/food/new.json?limit=100"
+        local result, body = http.request("GET", link)
+
+        body = json.parse(body)  
+
+        message:reply(body["data"]["children"][math.random(1, 100)]["data"].url)
+    end)()
+end
+
+function info(message)
+    coroutine.wrap(function()
+        local ts=tostring
+        local cpu=uv.cpu_info()
+        local threads=#cpu
+        local cpumodel=cpu[1].model
+        local mem=math.floor(collectgarbage('count')/1000)
+
+        message:reply {
+			embed = {
+				title = "Info",
+				fields = {
+					{name = "OS: ", value = ts(operatingsystem),inline = false},
+					{name = "CPU Threads: ", value = ts(threads),inline = false},
+					{name = "CPUT Mode: ", value = ts(cpumodel), inline = false},
+                    {name = "Memory Usage: ", value = ts(mem).." MB", inline = false}
+				},
+				color = discordia.Color(128, 255, 255).value,
+				-- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
+				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
+			}
+		}
+
+    end)()
+end
 
 client:on('ready', function()
 	-- client.user is the path for your bot
