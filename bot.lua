@@ -116,13 +116,13 @@ client:on("messageCreate", function(message)
 		message.channel:sendMessage {
 			embed = {
 				title = "Invite to your Server",
-                url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot"
+                url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot",
 				description = "Command List",
                 author = {
 					name = "Help Menu",
 					icon_url = "https://i.imgur.com/dqsdblw.png"
 				},
-                thumbnail = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg",
+                thumbnail = {url = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"},
 				fields = {
 					{name = "~joke", value = "jokes",inline = false},
 					{name = "~cute", value = "cute pictures",inline = false},
