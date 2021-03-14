@@ -127,10 +127,10 @@ client:on("messageCreate", function(message)
 					{name = "~joke", value = "jokes",inline = false},
 					{name = "~cute", value = "cute pictures",inline = false},
 					{name = "~meme", value = "wholecome memes", inline = false},
-                    {name = "", value = "Other messages will be sent based on message context", inline = false},
+                    {name = "-----", value = "Other messages will be sent based on message context", inline = false}
 				},
 				color = discordia.Color(128, 255, 255).value,
-				timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
+				-- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
 				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
 			}
 		}
