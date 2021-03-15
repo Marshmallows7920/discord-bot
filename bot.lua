@@ -27,11 +27,15 @@ local affirmations = {
     "When you really want it, you are unstoppable."}
 
 local jokes = {
-    "kunal","mohsen","Yashas","Andrea","Ronnie","Marc Yu"
+    "kunal","mohsen","Yashas","Andrea","Ronnie","Marc Yu", "jacob", "ze", "jake", "noah", "groovy", "michelle"
 }
 
 local dice = {
     "1", "2", "3", "4", "5", "6"
+}
+
+local hug = {
+    "I love hugs, thanks!", "I\'m always here for you!", "embraces you", "*hug*"
 }
 --[[
     Notes
@@ -207,6 +211,7 @@ client:on("messageCreate", function(message)
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
                         {name = "~dice", value = "rolls a dice", inline = false},
+                        -- {name = "~hug", value = "bot gives you a hug", inline = false},
                         {name = "-----", value = "Other messages will be sent based on message context", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
@@ -233,6 +238,7 @@ client:on("messageCreate", function(message)
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
                         {name = "~dice", value = "rolls a dice", inline = false},
+                        -- {name = "~hug", value = "bot gives you a hug", inline = false},
                         {name = "-----", value = "Automated messages disabled on this server", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
