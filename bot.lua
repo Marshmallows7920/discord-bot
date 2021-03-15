@@ -30,8 +30,12 @@ local jokes = {
     "kunal","mohsen","Yashas","Andrea","Ronnie","Marc Yu"
 }
 
+local dice = {
+    "1", "2", "3", "4", "5", "6"
+}
 --[[
     Notes
+    bot page:    https://top.gg/bot/786804598835904543
 ]]
 
 
@@ -172,6 +176,11 @@ client:on("messageCreate", function(message)
         end
     end
 
+    -- Dice
+    if content:lower() == "~dice" then
+        message:reply(dice[math.random(#dice)])
+    end
+
     -- Info
     if content:lower() == "~info" then
         info(message)
@@ -189,7 +198,7 @@ client:on("messageCreate", function(message)
                         name = "Help Menu",
                         icon_url = "https://i.imgur.com/dqsdblw.png"
                     },
-                    thumbnail = {url = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"},
+                    thumbnail = {url = "https://i.imgur.com/2RQ2OlG.jpg"},
                     fields = {
                         {name = "~joke", value = "jokes",inline = false},
                         {name = "~cute", value = "cute pictures",inline = false},
@@ -197,6 +206,7 @@ client:on("messageCreate", function(message)
                         {name = "~food", value = "yumyum", inline = false},
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
+                        {name = "~dice", value = "rolls a dice", inline = false},
                         {name = "-----", value = "Other messages will be sent based on message context", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
@@ -222,6 +232,7 @@ client:on("messageCreate", function(message)
                         {name = "~food", value = "yumyum", inline = false},
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
+                        {name = "~dice", value = "rolls a dice", inline = false},
                         {name = "-----", value = "Automated messages disabled on this server", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
