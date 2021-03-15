@@ -93,6 +93,19 @@ function food(message)
     end)()
 end
 
+function showerthought(message)
+    coroutine.wrap(function()
+        local link = "https://www.reddit.com/r/showerthoughts/new.json?limit=100"
+        local result, body = http.request("GET", link)
+        local postnum = math.random(1, 100)
+
+        body = json.parse(body)  
+
+        message:reply(
+            body["data"]["children"][postnum]["data"].title)
+    end)()
+end
+
 function info(message)
     coroutine.wrap(function()
         local ts=tostring
@@ -185,6 +198,11 @@ client:on("messageCreate", function(message)
         message:reply(dice[math.random(#dice)])
     end
 
+    -- showerthought
+    if content:lower() == "~showerthought" then
+        showerthought(message)
+    end
+
     -- Info
     if content:lower() == "~info" then
         info(message)
@@ -211,7 +229,9 @@ client:on("messageCreate", function(message)
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
                         {name = "~dice", value = "rolls a dice", inline = false},
-                        -- {name = "~hug", value = "bot gives you a hug", inline = false},
+                        {name = "~hug", value = "bot gives you a hug", inline = false},
+                        {name = "~dice", value = "rolls a dice", inline = false},
+                        {name = "~showerthought", value = "Showerthoughts", inline = false},
                         {name = "-----", value = "Other messages will be sent based on message context", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
@@ -238,7 +258,8 @@ client:on("messageCreate", function(message)
                         {name = "~sad", value = "sad no more", inline = false},
                         {name = "~coin", value = "flip a coin", inline = false},
                         {name = "~dice", value = "rolls a dice", inline = false},
-                        -- {name = "~hug", value = "bot gives you a hug", inline = false},
+                        {name = "~hug", value = "bot gives you a hug", inline = false},
+                        {name = "~showerthought", value = "Showerthoughts", inline = false},
                         {name = "-----", value = "Automated messages disabled on this server", inline = false}
                     },
                     color = discordia.Color(85, 211, 197).value,
