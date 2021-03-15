@@ -148,6 +148,11 @@ client:on("messageCreate", function(message)
         meme(message)
     end
 
+    -- Food
+    if content:lower() == "~food" then
+        food(message)
+    end
+
     -- Sad
     if content:lower() == "~sad" then
         message:reply("don't be sad!")
@@ -155,31 +160,74 @@ client:on("messageCreate", function(message)
         cute(message)
     end
 
+    -- Coin
+    if content:lower() == "~coin" then
+        local coin1 = math.random(1,100)
+        if coin1 > 50
+            message:reply("Heads (*^▽^*)")
+        else
+            message:reply("Tails (✿◡‿◡)")
+        end
+    end
+
+    -- Info
+    if content:lower() == "~info" then
+        info(message)
+    end
+
     -- Help Menu
     if content:lower() == "~help" then
-		message:reply {
-			embed = {
-				title = "Invite to your Server",
-                url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot",
-				description = "Command List",
-                author = {
-					name = "Help Menu",
-					icon_url = "https://i.imgur.com/dqsdblw.png"
-				},
-                thumbnail = {url = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"},
-				fields = {
-					{name = "~joke", value = "jokes",inline = false},
-					{name = "~cute", value = "cute pictures",inline = false},
-					{name = "~meme", value = "wholesome memes", inline = false},
-                    {name = "~food", value = "yumyum", inline = false},
-                    {name = "~sad", value = "sad no more", inline = false},
-                    {name = "-----", value = "Other messages will be sent based on message context", inline = false}
-				},
-				color = discordia.Color(128, 255, 255).value,
-				-- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
-				footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
-			}
-		}
+        if message.guild.id ~= "724363919035990106" then
+            message:reply {
+                embed = {
+                    title = "Invite to your Server",
+                    url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot",
+                    description = "Command List",
+                    author = {
+                        name = "Help Menu",
+                        icon_url = "https://i.imgur.com/dqsdblw.png"
+                    },
+                    thumbnail = {url = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"},
+                    fields = {
+                        {name = "~joke", value = "jokes",inline = false},
+                        {name = "~cute", value = "cute pictures",inline = false},
+                        {name = "~meme", value = "wholesome memes", inline = false},
+                        {name = "~food", value = "yumyum", inline = false},
+                        {name = "~sad", value = "sad no more", inline = false},
+                        {name = "~coin", value = "flip a coin", inline = false},
+                        {name = "-----", value = "Other messages will be sent based on message context", inline = false}
+                    },
+                    color = discordia.Color(85, 211, 197).value,
+                    -- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
+                    footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
+                }
+            }
+        else
+            message:reply {
+                embed = {
+                    title = "Invite to your Server",
+                    url = "https://discord.com/api/oauth2/authorize?client_id=786804598835904543&permissions=388161&scope=bot",
+                    description = "Command List",
+                    author = {
+                        name = "Help Menu",
+                        icon_url = "https://i.imgur.com/dqsdblw.png"
+                    },
+                    thumbnail = {url = "https://i.pinimg.com/originals/4b/94/94/4b949483527c5d6793318346ec327b2f.jpg"},
+                    fields = {
+                        {name = "~joke", value = "jokes",inline = false},
+                        {name = "~cute", value = "cute pictures",inline = false},
+                        {name = "~meme", value = "wholesome memes", inline = false},
+                        {name = "~food", value = "yumyum", inline = false},
+                        {name = "~sad", value = "sad no more", inline = false},
+                        {name = "~coin", value = "flip a coin", inline = false},
+                        {name = "-----", value = "Automated messages disabled on this server", inline = false}
+                    },
+                    color = discordia.Color(85, 211, 197).value,
+                    -- timestamp = os.date('!%Y-%m-%dT%H:%M:%S'),
+                    footer = {text = message.author.name.." | Made by Marshmallows7920 - version 1.0.1 2021"}
+                }
+            }
+        end
 	end
     
     -- disabled on cs server
