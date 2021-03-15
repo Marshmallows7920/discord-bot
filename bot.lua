@@ -164,7 +164,7 @@ client:on("messageCreate", function(message)
     if content:lower() == "~coin" then
         local coin1 = math.random(1,100)
         if coin1 > 50 then
-            message:reply("Heads (*^▽^*)")
+            message:reply("Heads (\*^▽^\*)")
         elseif coin1 == 50 then
             message:reply("THE COIN LANDED ON ITS EDGE (╯°□°）╯︵ ┻━┻")
         else
