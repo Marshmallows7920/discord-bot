@@ -198,6 +198,11 @@ client:on("messageCreate", function(message)
         message:reply(dice[math.random(#dice)])
     end
 
+    -- Hug
+    if content:lower() == "~hug" then
+        message:reply(hug[math.random(#hug)])
+    end
+    
     -- showerthought
     if content:lower() == "~showerthought" then
         showerthought(message)
@@ -205,7 +210,8 @@ client:on("messageCreate", function(message)
 
     -- Info
     if content:lower() == "~info" then
-        info(message)
+        -- info(message)
+        message:reply("na")
     end
 
     -- Help Menu
