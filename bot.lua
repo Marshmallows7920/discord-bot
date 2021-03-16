@@ -106,6 +106,19 @@ function showerthought(message)
     end)()
 end
 
+function cat(message)
+    coroutine.wrap(function()
+        local link = "https://www.reddit.com/r/illegallysmolcats/new.json?limit=100"
+        local result, body = http.request("GET", link)
+        local postnum = math.random(1, 100)
+
+        body = json.parse(body)  
+
+        message:reply(
+            body["data"]["children"][postnum]["data"].url)
+    end)()
+end
+
 function info(message)
     coroutine.wrap(function()
         local ts=tostring
@@ -206,6 +219,11 @@ client:on("messageCreate", function(message)
     -- showerthought
     if content:lower() == "~showerthought" then
         showerthought(message)
+    end
+
+    -- cat
+    if content:lower() == "~cat" then
+        cat(message)
     end
 
     -- Info
